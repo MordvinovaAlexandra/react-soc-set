@@ -1,0 +1,26 @@
+.dialogs{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    justify-self: center;
+    
+}
+.dialogs-item{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+.dialog{
+    margin: 20px auto;
+   font-size: 20px;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.massage{
+    margin: 40px auto;
+   font-size: 20px;
+   font-family: 'Courier New', Courier, monospace;
+    color:wheat
+}
