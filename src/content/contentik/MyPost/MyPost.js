@@ -4,33 +4,34 @@ import {useRef} from 'react';
 import { addPostActionCreator, updateNewPostTextActionCreater } from '../../../state';
 
 
-function MyPost({post,neww,dispatch}, props){
+function MyPost({neww,dispatch,post,upDateNewPostText,addPost}, props){
 
  
 console.log(props.post)
 
-  const addPost=(props)=>{
-    let text=newInp.current.value;
-    dispatch({type:'ADD-POST'}); 
+  const onaddPost=(props)=>{
+    //let text=newInp.current.value;
+    addPost()
+   
     
-    dispatch( addPostActionCreator())
-    newInp.current.value='';
+    //newInp.current.value='';
   }
 
   const onChenge=(props)=>{
    let ext=newInp.current.value;
-   dispatch( updateNewPostTextActionCreater(ext))
+  upDateNewPostText(ext)
+   
    
    newInp.current.value='';
   }
 
   let newInp=useRef()
   let newPost=post.map((item)=><Post massage={item.massage}/>)
-  
+  //let value=neww.map((item)=>{<div>{item.mas}</div>})
     return(
     <div className="post">
-        <textarea onChange={onChenge} ref={newInp} value={neww}/>
-        <button onClick={addPost}>add Post</button>
+        <textarea onChange={onChenge} ref={newInp} value={neww.mas}/>
+        <button onClick={onaddPost}>add Post</button>
         <div>
         my Post
         </div>

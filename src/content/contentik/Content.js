@@ -1,17 +1,13 @@
 import MyPost from '../contentik/MyPost/MyPost'
+import MyPostContainer from './MyPost/MypostContainer';
 import ProfileInfo from "./profileInfo/ProfileInfo";
 function Content (props)
 {
-    console.log(props.post)
+  
     return(
     <div className="content">
-        <ProfileInfo/>
-    <MyPost 
-    neww={props.newPost}
-    dispatch={props.dispatch}
-    post={props.post}
-
-    />
+    <ProfileInfo/>
+    <MyPostContainer/>
    
     </div>
     )

@@ -11,6 +11,21 @@ let initia= {
        ],
      newPost:
        [{mas:'it-camasutra'}],
+
+       dialogs:[
+        {name: "sasha", id:1},
+        {name: "masha", id:2},
+        {name: "dasha", id:3},
+        {name: "liza",  id:4},
+        {name: "vadim", id:5},
+      ],
+     MassageEl:[
+        {id:1, text:"Прив"},
+        {id:2, text:"Привет амлет"},
+        {id:3, text:"Прив дессерт"},
+        {id:4, text:"Прив кабет"},
+        {id:5, text:"Прив дурет"},
+      ],
      }
 
 
@@ -18,23 +33,32 @@ let initia= {
 
      const reduserNewPost=(state=initia,action)=>{
     
-    if(action.type ===ADD_POST)
-
-    {
+    switch(action.type ){
+case ADD_POST : {
     
+  
         let newPost={
             id:5,
             massage:state.newPost.mas,
         };
-        state.post.push(newPost);
-        //this._state.newPost.mas='';
+        let Copystate={...state};
+        Copystate.post=[...state.post];
+        Copystate.post.push(newPost);
+        Copystate.newPost.mas=''
        
-        
-    }
-  else if(action.type===UPDATE_NEW_POST_tEXT){
-   state.newPost.mas=action.text
+       
+     return Copystate;  
     
   }
+  case UPDATE_NEW_POST_tEXT:{
+    let Copystate={...state};
+       Copystate.newPost={...state.newPost}
+        Copystate.newPost.mas={...state.newPost.mas}
+   Copystate.newPost.mas=action.text
+    return Copystate
+  }
+  default:
   return state;
 }
+     }
 export default reduserNewPost;

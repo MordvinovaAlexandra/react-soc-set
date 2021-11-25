@@ -1,8 +1,6 @@
 import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { addMassage, updateDialogi } from '../state';
 import s from './Dialogs.module.css';
-
 
 const DialogItem=(props)=>{
 
@@ -18,7 +16,7 @@ const Massage=(props)=>{
         )
 }
 
-const Dialogs=({dialog,massage,dialogText,newinpDialog, dispatch})=>{
+  function Dialogs ({dialog,massage,dialogText,newinpDialog,diChange,diAdd}){
  
   let newDial=dialogText.map((item)=><li>{item.name}</li>)
   let DialogsEements=dialog.map(dialog=><DialogItem name={dialog.name} id={dialog.id}/>)
@@ -30,29 +28,29 @@ const Dialogs=({dialog,massage,dialogText,newinpDialog, dispatch})=>{
   let DialogChange=(props)=>{
     let tex=inp.current.value;
     inp.current.value='';
-    dispatch(updateDialogi(tex))
+    diChange(tex)
   }
   //добавить диалог
-  let DialogAdd=(props)=>{
+   const DialogAdd=(props)=>{
     let text=inp.current.value;
     console.log(text)
-    dispatch(addMassage())
+    diAdd()
     
   }
     return(
   <div className="app-wrapper-content">
       <div class={s.dialogs}>
         <div class="dialogs-item">
-          {DialogsEements}
+           {DialogsEements} 
         </div>
         <div>
-          {MassageElem}
+           {MassageElem} 
         </div>
         <div>
         <textarea
          onChange={DialogChange} 
          ref={inp} 
-         value={newinpDialog}></textarea>
+         value={newinpDialog.di}></textarea>
         <button
         onClick={DialogAdd}>кнопка</button>
         <div>
